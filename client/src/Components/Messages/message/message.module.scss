@@ -1,0 +1,21 @@
+
+
+.card {
+    width: 70%;
+    min-height: 250px;
+    margin: 20px auto;
+}
+
+.fromTo {
+    padding: 10px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.fromTo:first-child {
+    display: flex;
+    justify-content: space-between;
+}
+
+.textContainer {
+    padding: 10px
+}

@@ -1,0 +1,45 @@
+
+
+.suggestion {
+    cursor: pointer;
+    border: 1px solid lightgray;
+    background-color: #fff;
+    width: 100%;
+}
+
+.suggestionBlock {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 99;
+}
+
+.suggestion:hover {
+    background-color: lightgray;
+}
+
+.inputBlock {
+    width: 70%;
+    position: relative;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.setButton {
+    margin: 10px 0;
+}
+
+.bodyMessage {
+    width: 70%;
+}
+
+.titleBody {
+    width: 100%;
+    text-align: center;
+}
