@@ -48,33 +48,29 @@ const getUser = (userId: string) => {
    
 const EVENTS = {
     connection:'connection',
-    disconnection: 'disconnect'
+    disconnection: 'disconnect',
+    SEND_MESSAGE: 'send-message',
+    ADD_USER: 'addUser',
+    GET_MESSAGE: 'get-message'
 }
     io.on(EVENTS.connection, (socket: Socket) => { 
         console.log(`User connected ${socket.id}`)
 
-        socket.on("addUser", (userName) => {
+        socket.on(EVENTS.ADD_USER, (userName) => {
             addUser(userName, socket.id);
             io.emit("getUsers", users);
           console.log(users)
           });  
 
-        socket.on('send-message', (data) => {
+        socket.on(EVENTS.SEND_MESSAGE, (data) => {
             socket.emit('send-message', data)
             console.log(data)
             const user = users.find((user: any) => user.userName === data.receiver);
 
             if(user) {
-                socket.to(user.socketId).emit('get-message', data)
+                socket.to(user.socketId).emit(EVENTS.GET_MESSAGE, data)
             }
         })
-        
-
-        // socket.on("sendMessage", ({ senderId, receiverId, text }) => {
-        //     console.log(senderId, receiverId, text)
-        //     console.log(users)
-        //     const user2 = users.find((user) => user.userId === senderId);
-        //   const user = users.find((user) => user.userId === receiverId); 
 
         socket.on(EVENTS.disconnection, () => {
             console.log('userdisconnected')
